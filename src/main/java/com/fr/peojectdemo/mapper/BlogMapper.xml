@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fr.peojectdemo.mapper.BlogMapper">
+
+	<select id="find" parameterType="Map" resultMap="BlogResultMap">
+         select * from blog b inner join user u on b.uid=u.uid
+         <where>
+         	<if test="uid!=null and uid!=''" >
+         		and u.uid = '${uid}'
+         	</if>
+         </where>
+         	order by time desc 
+         	limit ${(pageCode-1)*pageSize},${pageSize} 
+    </select>
+    
+    <resultMap type="Blog" id="BlogResultMap">
+         <id property="blogId" column="blogId"></id>
+         <result property="message" column="message"/>
+         <result property="time" column="time"/>
+         <result property="like" column="like"/>
+         <result property="dislike" column="dislike"/>
+         <result property="fansNumber" column="fansNumber"/>
+         <result property="commentsNumber" column="commentsNumber"/>
+         <result property="forwordNumber" column="forwordNumber"/>
+         <result property="readNumber" column="readNumber"/>
+         <result property="title" column="title"/>
+         <collection property="user" ofType="user">
+            <id property="uid" column="uid"></id>
+            <result property="username" column="username"/>
+            <result property="phonenumber" column="phonenumber"/>
+            <result property="email" column="email"/>
+            <result property="icon" column="icon"/>
+            <result property="investmentage" column="investmentage"/>
+            <result property="profile" column="profile"/>
+            <result property="profession" column="profession"/>
+            <result property="residence" column="residence"/>
+            <result property="privacy" column="privacy"/>
+            <result property="state" column="state"/>
+            <result property="code" column="code"/>
+         </collection>
+    </resultMap>
+    
+    <select id="findAllCountLike" parameterType="Map" resultType="int">
+         select count(*) from blog
+         <!-- <where>
+            <if test="foodName!=null and foodName!=''" >
+         		and foodName like '%${foodName}%'
+         	</if>
+         	<if test="foodstyleId!=null and foodstyleId!=''" >
+         		and foodstyleId = #{foodstyleId}
+         	</if>
+         </where> -->
+    </select>
+    
+	
+</mapper>

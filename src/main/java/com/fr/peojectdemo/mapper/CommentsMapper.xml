@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fr.peojectdemo.mapper.CommentsMapper">
+
+    <select id="findComments" parameterType="String" resultType="Comments">
+         select * from comments where blogId = #{blogId}
+    </select>
+    
+    <insert id="saveComment" parameterType="Comments">
+	<selectKey keyProperty="cId" resultType="string" order="BEFORE">  
+	        select replace(uuid(), '-', '') as id from dual
+	</selectKey>
+	insert into comments(blogId, comments,cId,username,commentTime) 
+	 values( #{blogId},#{comments}, #{cId}, #{username}, #{commentTime})
+	</insert>
+	<delete id="deleteComment" parameterType="Comments">
+		delete from comments where cId = #{cId}
+	</delete>
+</mapper>
