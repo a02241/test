@@ -17,6 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<a href="searchblog?uid=4a9286e30a3e11e995e3e0d55ebbf96c">博客</a>
 	<a href="yanzheng.action">滑块验证</a>
 	
+	
 	邮箱注册：~~~~~~~~~~~~~~~
 	<form action="/email/regist" method="post">
 		<table>
