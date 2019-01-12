@@ -9,12 +9,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/fr/css/bootstrap.min.css">
-<link rel="stylesheet" href="/fr/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="/fr/css/blog.css">
-<link href="/fr/js/favicon.ico" rel="SHORTCUT ICON">
-<script src="/fr/js/jquery-1.11.2.min.js"></script>
-<script src="/fr/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/blog.css">
+<link href="js/favicon.ico" rel="SHORTCUT ICON">
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 <script>
 	var _hmt = _hmt || [];

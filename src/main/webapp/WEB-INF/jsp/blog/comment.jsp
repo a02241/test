@@ -9,12 +9,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/fr/css/bootstrap.min.css">
-<link rel="stylesheet" href="/fr/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="/fr/css/blog.css">
-<link href="/fr/js/favicon.ico" rel="SHORTCUT ICON">
-<script src="/fr/js/jquery-1.11.2.min.js"></script>
-<script src="/fr/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/blog.css">
+<link rel="stylesheet" href="css/jigsaw.css">
+<link href="js/favicon.ico" rel="SHORTCUT ICON">
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 <script>
 	var _hmt = _hmt || [];
@@ -108,8 +109,23 @@
 
 
 <script type="text/javascript">
+		var check="";
 	function loadimage(){
 		document.getElementById("randImage").src="/Blog/image.jsp?"+Math.random();
+	}
+	function dosss(){
+	jigsaw.init({
+			    el: document.getElementById('captcha'),
+			    onSuccess: function() {
+			      document.getElementById('msg').innerHTML = '登录成功！'
+			      check="true";
+			    },
+			    onFail: cleanMsg,
+			    onRefresh: cleanMsg
+			  })
+			  function cleanMsg() {
+			    document.getElementById('msg').innerHTML = ''
+			  }
 	}
 	
 	function submitData(){
@@ -117,9 +133,21 @@
 		var imageCode=$("#imageCode").val();
 		if(content==null || content==''){
 			alert("请输入评论内容！");
-		}else if(imageCode==null || imageCode==''){
-			alert("请填写验证码！");
-		}else{
+		}else if(check==null || check==''){
+			alert("请滑动验证码！");
+			jigsaw.init({
+			    el: document.getElementById('captcha'),
+			    onSuccess: function() {
+			      document.getElementById('msg').innerHTML = '登录成功！'
+			      check="true";
+			    },
+			    onFail: cleanMsg,
+			    onRefresh: cleanMsg
+			  })
+			  function cleanMsg() {
+			    document.getElementById('msg').innerHTML = ''
+			  }
+		}else if(check="true"){
 			 $.ajax({
 				url : "saveComment.action",
 				type:'post',
@@ -155,13 +183,12 @@
 		$('.otherComment').show();
 	}
 	
-	function delect(){
+	function delect(cId){
 		$.ajax({
 			url : "delectComment.action",
 			type:'post',
 			data:{
-				commentTime:$("input[name='CcommentTime']").val(),
-				username:$("input[name='Cusername']").val(),
+				cId:cId
 	        },//传入后台数据  
 	         dataType:'text',//后台返回数据类型 
 			success : function(resultMap) {
@@ -230,8 +257,7 @@
 			  &title=${title}
 			  &forwordNumber=${forwordNumber}
 			  &blogId=${blogId}" method="post"> --%>
-		<input type="hidden" name="cId" value="${comments.cId}">
-		<button type="submit" onclick="delect(${comments.cId})">删除</button>   
+		<button  onclick="delect('${comments.cId}')">删除</button>   
 		<!-- </form> -->
 	</div>
 	<div class="commentDatas">
@@ -257,7 +283,10 @@
 				<textarea style="width: 100%" rows="3" id="content" name="content" placeholder="来说两句吧..."></textarea>
 			</div>
 			<div class="verCode">
-				验证码：<input type="text" value="" name="imageCode"  id="imageCode" size="10" onkeydown= "if(event.keyCode==13)form1.submit()"/>&nbsp;<img onclick="javascript:loadimage();"  title="换一张试试" name="randImage" id="randImage" src="/Blog/image.jsp" width="60" height="20" border="1" align="absmiddle"> 
+			<div id="captcha"></div>
+ 			 <div id="msg"></div>
+ 			 <script src="js/jigsaw.js"></script>
+    		<button type="button" onclick="dosss()">点击验证</button>
 			</div>
 			<div class="publishButton">
 				<button class="btn btn-primary" type="button" onclick="submitData()">发表评论</button>
