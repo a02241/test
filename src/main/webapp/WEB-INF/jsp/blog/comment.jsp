@@ -25,6 +25,13 @@
 	  var s = document.getElementsByTagName("script")[0]; 
 	  s.parentNode.insertBefore(hm, s);
 	})();
+	
+	function replay(obj){
+	$('replay').value+='回复'+obj.value+'楼\n';
+	}
+	function $(id){
+	return document.getElementById(id)
+	}
 </script>
 
 <style type="text/css">
@@ -263,8 +270,12 @@
 	<div class="commentDatas">
 		<div class="comment">
 		
-			<span><font>${comments.username}&nbsp;&nbsp;&nbsp;&nbsp;</font>
+			<span><font>${comments.username}&nbsp;&nbsp;&nbsp;&nbsp;</font>		
 			${comments.comments}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<fmt:formatDate value="${comments.commentTime}" pattern="yyyy年MM月dd日 hh:mm:ss"/>&nbsp;]</span>
+		
+		<a href="javascript:void 0;" onclick="replay(this)" value="1">回复</a>
+		<hr>
+		<br>
 		</div>								
 		
 	</div>
