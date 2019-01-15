@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,19 +24,44 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	@RequestMapping("/userLogin")
-	public String userLogin(Model model,HttpServletRequest request,HttpSession session) {
-		String loginStr = request.getParameter("username_phonenumber_email");
-		String password = request.getParameter("password");
-		User user = userService.loginSelect(loginStr);
-		if (user != null) {
-			if (password.equals(user.getPassword())) {
-				return "WEB-INF/jsp/index";
+	@ResponseBody
+	public String userLogin(ModelMap model,HttpServletRequest request,HttpSession session,HttpServletResponse response) {
+		String loginStr = request.getParameter("username");
+		String password = request.getParameter("passwordLogin");
+		String data ="";
+		User user = new User();
+		try {
+			user = userService.loginSelect(loginStr);
+			if (user != null) {
+				if (password.equals(user.getPassword())) {
+					data = "1";
+				}else {
+					data = "2";
+				}
 			}else {
-				model.addAttribute("msg", "密码错误！");
+				data = "3";
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		model.addAttribute("msg", "账号不存在！");
-		return "userLogin";
+		return data;
+	}
+	
+	@RequestMapping("/userLogined")
+	public String userLogined(User user,ModelMap model) {
+		user = userService.loginSelect(user.getUsername());
+		model.put("user", user);
+		return "WEB-INF/jsp/index";
+	}
+	
+	@RequestMapping("/userBlog")
+	public String userBlog(User user) {
+		return "WEB-INF/jsp/blog";
+	}
+	
+	@RequestMapping("/userBlogarea")
+	public String userBlogarea(User user) {
+		return "WEB-INF/jsp/blogarea";
 	}
 	
 	/**

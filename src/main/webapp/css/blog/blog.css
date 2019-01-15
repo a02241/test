@@ -1,7 +1,6 @@
 .data_list{
-	border: 1px solid #E5E5E5;
 	padding: 10px;
-	background-color: #FDFDFD;
+	background-color: #FF817C;
 	margin-top: 0px;
 	margin-bottom: 10px;
 }
@@ -10,7 +9,6 @@
 	font-size: 15px;
 	font-weight: bold;
 	
-	border-bottom: 1px solid #E5E5E5;
 	padding-bottom: 10px;
 	padding-top: 5px;
 }
@@ -133,7 +131,6 @@
 }
 
 .data_list .blog_lastAndNextPage{
-	border-top:1px dotted black;
 	padding: 10px;
 }
 
@@ -145,7 +142,6 @@
 	margin-top:10px;
 	margin-bottom: 5px;
 	padding-bottom:15px;
-	border-bottom: 1px dotted gray;
 }
 
 .data_list .commentDatas .comment font{

@@ -4,8 +4,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fr.peojectdemo.mapper.CommentsMapper">
 
-    <select id="findComments" parameterType="String" resultType="Comments">
+    <select id="findComments" parameterType="Map" resultType="Comments">
          select * from comments where blogId = #{blogId}
+         	order by commentTime
+         	limit ${(pageCode-1)*pageSize},${pageSize} 
+    </select>
+    
+    <select id="findAllCountComments" parameterType="Map" resultType="int">
+         select count(*) from comments
+         <!-- <where>
+            <if test="foodName!=null and foodName!=''" >
+         		and foodName like '%${foodName}%'
+         	</if>
+         	<if test="foodstyleId!=null and foodstyleId!=''" >
+         		and foodstyleId = #{foodstyleId}
+         	</if>
+         </where> -->
     </select>
     
     <insert id="saveComment" parameterType="Comments">

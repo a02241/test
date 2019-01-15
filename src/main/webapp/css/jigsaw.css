@@ -102,6 +102,7 @@
   height: 12px;
   background: url(http://cstaticdun.126.net//2.6.3/images/icon_light.f13cff3.png) 0 -26px;
   background-size: 34px 471px;
+  z-index:9;
 }
  
 .refreshIcon {
@@ -113,4 +114,9 @@
   cursor: pointer;
   background: url(http://cstaticdun.126.net//2.6.3/images/icon_light.f13cff3.png) 0 -437px;
   background-size: 34px 471px;
+  z-index:9;
+}
+.verCode1 {
+	position:relative;
+	top:-200px;
 }

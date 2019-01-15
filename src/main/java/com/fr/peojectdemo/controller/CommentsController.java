@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,10 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fr.peojectdemo.pojo.Comments;
 import com.fr.peojectdemo.service.CommentsService;
+import com.fr.peojectdemo.util.PageBean;
 import com.fr.peojectdemo.util.Test;
 import com.fr.peojectdemo.util.VerifyImageUtil;
 
@@ -33,16 +36,12 @@ public class CommentsController {
 	
 	
 	@RequestMapping("comment")
-	public String comment(HttpSession session,String username,String message,Date time,String readNumber,String commentsNumber,String title,String forwordNumber,ModelMap model,String blogId) throws Exception {
-		/*model.put("username", username);
-		model.put("message", message);
-		model.put("time", time);
-		model.put("readNumber", readNumber);
-		model.put("commentsNumber", commentsNumber);
-		model.put("title", title);
-		model.put("forwordNumber", forwordNumber);*/
-		List<Comments> list = commentsService.findComments(blogId);
-//		model.put("comments", list);
+	public String comment(@RequestParam(defaultValue="1") int pageCode,HttpSession session,String username,String message,Date time,String readNumber,String commentsNumber,String title,String forwordNumber,ModelMap model,String blogId) throws Exception {
+		Map<String,Object> conditions = new HashMap<String,Object>();
+		if(blogId.trim().length()>0||blogId==null) {
+			conditions.put("blogId",blogId);
+		}
+		PageBean pb = commentsService.findComments(conditions, 3, pageCode);
 		session.setAttribute("username", username);
 		session.setAttribute("message", message);
 		session.setAttribute("time", time);
@@ -51,8 +50,8 @@ public class CommentsController {
 		session.setAttribute("title", title);
 		session.setAttribute("forwordNumber", forwordNumber);
 		session.setAttribute("blogId", blogId);
- 		session.setAttribute("comments", list);
-		return "WEB-INF/jsp/blog/comment";
+ 		session.setAttribute("pageBean", pb);
+		return "WEB-INF/jsp/blogarea";
 	}
 	
 	/**

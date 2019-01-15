@@ -180,6 +180,14 @@
       <version>1.4.7</version>
       </dependency>
       <!-- 邮件end -->
+      
+      	<dependency>
+		    <groupId>com.baidu</groupId>
+		    <artifactId>ueditor</artifactId>
+		    <version>1.1.2</version>
+		</dependency>
+      
+
   </dependencies>
   <build>
     <finalName>frlz</finalName>

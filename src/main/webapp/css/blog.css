@@ -1,0 +1,115 @@
+@charset "UTF-8";
+.mid_Top{
+	width:8.9%;
+	height:26px;
+	background: #FDA6A2;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	color:white;
+	text-align:center;
+	font-size:18px;
+}
+#mid_Top_one{
+	position:absolute;
+	left:15.6%;
+	top:75px;
+	background: #FF817C;
+}
+#mid_Top_two{
+	position:absolute;
+	left:24.9%;
+	top:75px;
+}
+#mid_Top_three{
+	position:absolute;
+	left:34.2%;
+	top:75px;
+}
+#mid_Top_four{
+	position:absolute;
+	left:43.5%;
+	top:75px;
+}
+#blogarea{
+	position:absolute;
+	left:15.6%;
+	top:101px;
+	width:51.3%;
+	height:1074px;
+	background: #FF817C;
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+	border-bottom-left-radius:5px; 
+}
+#pageNum{
+	position:absolute;
+	left:15.6%;
+	top:1200px;
+	width:51.3%;
+	height:27px;
+	background: #FF817C;
+	border-radius:5px;
+}
+#blogfooter{
+	position:absolute;
+	left:15.6%;
+	top:1250px;
+	width:51.3%;
+	height:199px;
+	background: #FF817C;
+	border-radius:5px;
+	margin-bottom:221px;
+}
+#userInfo{
+	width:15.7%;
+	height:351px;
+	position:absolute;
+	left:69%;
+	top:101px;
+	background: #FF817C;
+	border-radius:5px;
+}
+#linkblog{
+	width:15.7%;
+	height:351px;
+	position:absolute;
+	left:69%;
+	top:933px;
+	background: #FF817C;
+	border-radius:5px;
+}
+#banner{
+	width:15.7%;
+	height:351px;
+	position:absolute;
+	left:69%;
+	top:1310px;
+	background: #FF817C;
+	border-radius:5px;
+}
+#userInfoCircle{
+	width:79px;
+	height:79px;
+	background:white;
+	position:absolute;
+	margin-top:23px;
+	margin-left:110px;
+	border-radius:50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
