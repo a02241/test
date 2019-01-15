@@ -25,13 +25,6 @@
 	  var s = document.getElementsByTagName("script")[0]; 
 	  s.parentNode.insertBefore(hm, s);
 	})();
-	
-	function replay(obj){
-	$('replay').value+='回复'+obj.value+'楼\n';
-	}
-	function $(id){
-	return document.getElementById(id)
-	}
 </script>
 
 <style type="text/css">
@@ -208,6 +201,13 @@
 			}
 		}) 
 	}
+	function checkNum() {
+        var regex = /^\d+$/;
+        var num = document.formJ.pageCode.value;
+        if(!regex.test(num)) {
+           document.formJ.pageCode.value="";
+        }
+     }
 </script>
 <div class="data_list">
 	<div class="data_list_title">
@@ -252,7 +252,7 @@
 		</div>
 	</div>
 </div>
-		<c:forEach var="comments" items="${comments}">
+		<c:forEach var="comments" items="${pageBean.datas}">
 <div class="data_list">
 	<div class="data_list_title">
 		<img src="/Blog/static/images/comment_icon.png"/>
@@ -281,7 +281,62 @@
 	</div>
 </div>
 		</c:forEach>
-
+		<table>
+		<tr>        
+         <td  colspan="3">当前是${pageBean.pageCode }/${pageBean.allPages }页</td>
+         <td  colspan="3">
+            <a href="comment.action?username=${username}&message=${message}
+			  &time=${time}&readNumber=${readNumber}
+			  &commentsNumber=${commentsNumber}
+			  &title=${title}
+			  &forwordNumber=${forwordNumber}
+			  &blogId=${blogId}">
+			  首页
+			  </a>
+            <c:if test="${pageBean.pageCode > 1 }">
+               <a href="comment.action?pageCode=${pageBean.pageCode-1 }&username=${username}&message=${message}
+			  &time=${time}&readNumber=${readNumber}
+			  &commentsNumber=${commentsNumber}
+			  &title=${title}
+			  &forwordNumber=${forwordNumber}
+			  &blogId=${blogId}" class="jianli_apply">上一页</a>
+            </c:if>
+            <c:forEach var="pageCode" begin="1" end="${pageBean.allPages }" step="1">
+               <a href="comment.action?pageCode=${pageCode}&username=${username}&message=${message}
+			  &time=${time}&readNumber=${readNumber}
+			  &commentsNumber=${commentsNumber}
+			  &title=${title}
+			  &forwordNumber=${forwordNumber}
+			  &blogId=${blogId}">${pageCode}</a>
+            </c:forEach>
+            <c:if test="${pageBean.pageCode < pageBean.allPages}">
+              <a href="comment.action?pageCode=${pageBean.pageCode+1 }&username=${username}&message=${message}
+			  &time=${time}&readNumber=${readNumber}
+			  &commentsNumber=${commentsNumber}
+			  &title=${title}
+			  &forwordNumber=${forwordNumber}
+			  &blogId=${blogId}">下一页</a>
+            </c:if>
+            <a href="comment.action?pageCode=${pageBean.allPages }&username=${username}&message=${message}
+			  &time=${time}&readNumber=${readNumber}
+			  &commentsNumber=${commentsNumber}
+			  &title=${title}
+			  &forwordNumber=${forwordNumber}
+			  &blogId=${blogId}" class="sel_btn ch_cls">末页</a>
+         </td>
+         <td  colspan="3">
+              <form action="comment.action?username=${username}&message=${message}
+			  &time=${time}&readNumber=${readNumber}
+			  &commentsNumber=${commentsNumber}
+			  &title=${title}
+			  &forwordNumber=${forwordNumber}
+			  &blogId=${blogId}" name="formJ" method="post">
+                <input type="text" name="pageCode" size="5" onblur="checkNum()"/>
+                <input type="submit" value="GO" />
+              </form>
+         </td>
+     </tr>
+     </table>
 <div class="data_list" >
 <input type="hidden" name="myname" value="${username}">
 <input type="hidden" name="myblogId" value="${blogId}">

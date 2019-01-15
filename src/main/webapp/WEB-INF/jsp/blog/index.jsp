@@ -56,6 +56,13 @@
 			return true;
 		}
 	}
+	function checkNum() {
+        var regex = /^\d+$/;
+        var num = document.formJ.pageCode.value;
+        if(!regex.test(num)) {
+           document.formJ.pageCode.value="";
+        }
+     }
 </script>
 <div class="row">
 	<div class="col-md-12" style="padding-top: 10px">
@@ -138,6 +145,30 @@
 <div>
 	<nav>
 	  <ul class="pagination pagination-sm">
+	  <table>
+	  <tr>        
+         <td  colspan="3">当前是${pageBean.pageCode }/${pageBean.allPages }页</td>
+         <td  colspan="3">
+            <a href="searchblog?uid=4a9286e30a3e11e995e3e0d55ebbf96c" class="sel_btn ch_cls">首页</a>
+            <c:if test="${pageBean.pageCode > 1 }">
+               <a href="searchblog?pageCode=${pageBean.pageCode-1 }&uid=4a9286e30a3e11e995e3e0d55ebbf96c" class="jianli_apply">上一页</a>
+            </c:if>
+            <c:forEach var="pageCode" begin="1" end="${pageBean.allPages }" step="1">
+               <a href="searchblog?pageCode=${pageCode}&uid=4a9286e30a3e11e995e3e0d55ebbf96c">${pageCode}</a>
+            </c:forEach>
+            <c:if test="${pageBean.pageCode < pageBean.allPages}">
+              <a href="searchblog?pageCode=${pageBean.pageCode+1 }&uid=4a9286e30a3e11e995e3e0d55ebbf96c">下一页</a>
+            </c:if>
+            <a href="searchblog?pageCode=${pageBean.allPages }&uid=4a9286e30a3e11e995e3e0d55ebbf96c" class="sel_btn ch_cls">末页</a>
+         </td>
+         <td  colspan="3">
+              <form action="searchblog?uid=4a9286e30a3e11e995e3e0d55ebbf96c" name="formJ" method="post">
+                <input type="text" name="pageCode" size="5" onblur="checkNum()"/>
+                <input type="submit" value="GO" />
+              </form>
+         </td>
+     </tr>
+     </table>
 	    <li><a href='/Blog/index.html?page=1&'>首页</a></li><li class='disabled'><a href='#'>上一页</a></li><li class='active'><a href='/Blog/index.html?page=1&'>1</a></li><li class='disabled'><a href='#'>下一页</a></li><li><a href='/Blog/index.html?page=1&'>末页</a></li>
 	  </ul>
 	</nav>
