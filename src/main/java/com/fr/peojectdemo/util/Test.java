@@ -4,6 +4,8 @@ package com.fr.peojectdemo.util;
 import java.io.*;
 import java.util.Map;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
 
@@ -24,11 +26,16 @@ public class Test {
     }
 
     public static void testCode() throws IOException {
-        byte[] newImages = VerifyCodeUtil.getVerifyImg();
+       /* byte[] newImages = VerifyCodeUtil.getVerifyImg();
         FileOutputStream fout = new FileOutputStream("D:/photo/verigy.png");
         fout.write(newImages);
-        fout.close();
-
+        fout.close();*/
+    	String code = "上海(000002)";
+    	String regEx="[^0-9]";  
+		Pattern p = Pattern.compile(regEx);  
+		Matcher m = p.matcher(code);
+		String realCode = m.replaceAll("").trim();
+		System.out.println(realCode);
     }
 
     public void testImg() throws Exception {

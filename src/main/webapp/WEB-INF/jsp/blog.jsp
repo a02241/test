@@ -68,6 +68,7 @@
 			<input style="height:25px;width:198px;padding-left:14.5px" type="text" placeholder="搜索">
 			<img style="position:absolute;right:15px;top:10px" src="img/搜索.png">
 		</div>
+		<input type="text" name="code" value>
 		<div id="top_Login">
 			<div id="top_Icon"></div>
 			<div id="top_SelfInfo">
@@ -91,15 +92,16 @@
 		<div id="blogarea">
 			<div style="border:;width:875px;height:180px;position:absolute;top:50px;left:50px;" onclick="window.location = 'userBlogarea.action'"></div>
 		</div>
+		<button type="button" onclick="graphical()">111</button>
 		<div id="writearea">
 			<div style="border:;width:875px;height:180px;position:absolute;top:50px;left:50px;" onclick="window.location = 'userBlogarea.action'"></div>
 			<div id="main" style="width: 1000px; height: 500px; position:absolute; left:300px;top:180px"></div>
 			<script type="text/javascript">
-	
+			var data0="";
 	var myChart = echarts.init(document.getElementById('main'));
-
+	
 	        // 数据意义：开盘(open)，收盘(close)，最低(lowest)，最高(highest)
-	        var data0 = splitData([
+	        /* data0 = splitData([
 	            ['2013/1/24', 2320.26,2320.26,2287.3,2362.94],
 	            ['2013/1/25', 2300,2291.3,2288.26,2308.38],
 	            ['2013/1/28', 2295.35,2346.5,2295.35,2346.92],
@@ -188,8 +190,22 @@
 	            ['2013/6/6', 2264.43,2242.11,2240.07,2266.69],
 	            ['2013/6/7', 2242.26,2210.9,2205.07,2250.63],
 	            ['2013/6/13', 2190.1,2148.35,2126.22,2190.1]
-	        ]);
+	        ]); */
 
+	        function graphical(){
+	    		$.ajax({   		
+	    			url : "graphical.action",
+	    			/* data:{
+	    				name:$("input[name='selectName']").val()
+	    	        }, */
+	    			dataType:"text",
+	    			success : function(obj) {
+	    				data0=obj;
+	    				data0 = splitData(data0);
+	    				alert(data0);
+	    				}
+	    			});
+	    	}
 	        //切割数组，把数组中的日期和数据分离，返回数组中的日期和数据
 	        function splitData(rawData) {
 	            var categoryData = [];

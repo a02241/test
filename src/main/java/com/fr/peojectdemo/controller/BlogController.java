@@ -38,11 +38,11 @@ public class BlogController {
 		if(uid.trim().length()>0||uid==null) {
 			conditions.put("uid",uid);
 		}
-		PageBean pb = blogService.findBy(conditions, 10, pageCode);
+		PageBean pb = blogService.findBy(conditions, 7, pageCode);
 		String username = userService.searchUsername(uid);
 		model.put("pageBean", pb);
 		model.put("username", username);
-		return "WEB-INF/jsp/blog/index";	
+		return "WEB-INF/jsp/blog";	
 	}
 	
 }

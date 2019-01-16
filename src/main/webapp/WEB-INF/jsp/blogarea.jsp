@@ -223,14 +223,13 @@
 		<div id="mid_Top_three" class="mid_Top">经验分享</div>
 		<div id="mid_Top_four" class="mid_Top">模拟炒股</div>
 		<div id="blogarea">
-			<div id="essay"></div>
 			<div class="data_list">
-				<div class="data_list_title">
+				<div class="data_list_title" style="color: #FFFFFF;right	:20px">
 					<img src="img/blog_show_icon.png"/>
 					博客信息
 				</div>
 				<div>
-				    <div class="blog_title"><h3><strong>${title}</strong></h3></div>
+				    <div class="blog_title"><h3><strong style="color: #FFFFFF">${title}</strong></h3></div>
 				    <div style="padding-left: 330px;padding-bottom: 20px;padding-top: 10px">
 						<div class="bshare-custom"><a title="分享到QQ空间" class="bshare-qzone"></a>
 							<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
@@ -238,38 +237,33 @@
 							<a title="分享到腾讯微博" class="bshare-qqmb"></a>
 							<!-- <a title="分享到网易微博" class="bshare-neteasemb"></a> -->
 							<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
-							<span>转发数: ${forwordNumber}</span>
+							<span style="color: #FFFFFF">转发数: ${forwordNumber}</span>
 							<%-- <span class="BSHARE_COUNT bshare-share-count">转发数: ${forwordNumber}</span> --%>
 						</div>
 						<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=1&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
 				 	</div>
-					<div class="blog_info">
-						发布时间：『 <fmt:formatDate value="${time}" pattern="yyyy年MM月dd日 hh:mm:ss"/>』
-						&nbsp;&nbsp;博客类别：Java项目源码&nbsp;&nbsp;
-						阅读(${readNumber}) 评论(${commentsNumber})
-					</div>
-					<div class="blog_content">
+					<div class="blog_content" style="color: #FFFFFF">
 						<p>${message}<br/></p>
 					</div>
 					<div class="blog_keyWord" style="position:absolute;top:700px">
-						<font><strong>关键字：</strong></font>
-						&nbsp;&nbsp;<a href="/Blog/blog/q.html?q=3333" target="_blank">3333</a>&nbsp;&nbsp;
+						<font><strong style="color: #FFFFFF">关键字：</strong></font>
+						&nbsp;&nbsp;<a href="/Blog/blog/q.html?q=3333" target="_blank" style="color: #FFFFFF">3333</a>&nbsp;&nbsp;
 					</div>
 					<div class="blog_lastAndNextPage" style="position:absolute;top:750px">
 						<p>xxx<a href='/Blog/blog/articles/81.html'>XXXXXXXXXX</a></p><p>xxx</p>
 					</div>
 				</div>
 			</div>
-			<span style="position:absolute;left:568px;top:1020px;color:white">发布于</span>
-			<span style="position:absolute;left:699px;top:1020px;color:white">阅读</span>
-			<span style="position:absolute;left:776px;top:1020px;color:white">评论</span>
+			<span style="position:absolute;left:368px;top:1020px;color:white">发布于 <fmt:formatDate value="${time}" pattern="yyyy年MM月dd日 hh:mm:ss"/></span>
+			<span style="position:absolute;left:699px;top:1020px;color:white">阅读 (${readNumber})</span>
+			<span style="position:absolute;left:776px;top:1020px;color:white">评论 (${commentsNumber})</span>
 			<span style="position:absolute;left:862px;top:1020px;color:white">收藏</span>
 		</div>
 		
 		<div id="discussarea">
 			<c:forEach var="comments" items="${pageBean.datas}">
 			<div class="data_list">
-				<div class="data_list_title">
+				<div class="data_list_title" style="color: #FFFFFF">
 					<img src="img/comment_icon.png"/>
 					评论信息
 					<input type="hidden" name="cId" value="${comments.cId}">

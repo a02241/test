@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fr.peojectdemo.mapper.Area_ListMapper">
+
+	<select id="selectCode" parameterType="String" resultType="long">
+         select code from area_list where name = ${name};
+    </select>
+    
+	<select id="selectName" parameterType="String" resultType="Area_List">
+         select * from area_list where name like "%"#{name}"%" or code  like "%"#{name}"%" limit 5;
+    </select>
+    
+</mapper>
