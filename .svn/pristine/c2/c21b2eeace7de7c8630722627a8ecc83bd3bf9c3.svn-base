@@ -42,7 +42,7 @@ public class BlogController {
 		String username = userService.searchUsername(uid);
 		model.put("pageBean", pb);
 		model.put("username", username);
-		return "WEB-INF/jsp/blog/index";	
+		return "WEB-INF/jsp/blog";	
 	}
 	
 }

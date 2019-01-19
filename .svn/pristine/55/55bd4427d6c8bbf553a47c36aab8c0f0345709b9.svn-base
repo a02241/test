@@ -1,0 +1,20 @@
+@charset "UTF-8";
+#pageNum{
+	position:absolute;
+	left:15.6%;
+	top:1200px;
+	width:51.3%;
+	height:27px;
+	background: #FF817C;
+	border-radius:5px;
+}
+#blogfooter{
+	position:absolute;
+	left:15.6%;
+	top:1250px;
+	width:51.3%;
+	height:199px;
+	background: #FF817C;
+	border-radius:5px;
+	margin-bottom:221px;
+}

@@ -1,0 +1,44 @@
+#discussarea{
+	position:absolute;
+	left:15.6%;
+	top:1200px;
+	width:51.3%;
+	height:525px;
+	background: #FF817C;
+	border-radius:5px;
+}
+#pageNum{
+	position:absolute;
+	top:1749px;
+}
+#discuss{
+	position:absolute;
+	left:15.6%;
+	top:1801px;
+	width:51.3%;
+	height:199px;
+	background: #FF817C; 
+	border-radius:5px;
+}
+#blogfooter{
+	position:absolute;
+	top:2025px;
+}
+#essay{
+	border:1px solid black;
+	width:875px;
+	height:900px;
+	position:absolute;
+	top:50px;
+	left:50px;
+}
+
+
+
+
+
+
+
+
+
+
